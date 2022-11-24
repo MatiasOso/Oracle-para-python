@@ -5,7 +5,6 @@
 
 import tkinter
 
-
 def mifuncion():
     print(caja.get())
 
@@ -38,6 +37,42 @@ correo= tkinter.Label(ventana, text="Ingrese su correo:")
 correo.grid(column=0, row=4)
 caja4 = tkinter.Entry(ventana)
 caja4.grid(column=1, row=4)
+
+password = tkinter.Label(ventana, text="Ingrese su contraseña:")
+password.grid(column=0, row=5)
+caja5 = tkinter.Entry(ventana, show="*")
+caja5.grid(column=1, row=5)
+
+repassword = tkinter.Label(ventana, text="Repita su contraseña:")
+repassword.grid(column=0, row=6)
+caja6 = tkinter.Entry(ventana, show="*")
+caja6.grid(column=1, row=6)
+
+if caja5.get() == caja6.get():
+    print("Contraseña correcta")    
+else:
+    print("Contraseña incorrecta")
+
+username = tkinter.Label(ventana, text="Ingrese su username:")
+username.grid(column=0, row=7)
+caja7 = tkinter.Entry(ventana)
+caja7.grid(column=1, row=7)
+
+hobbies = tkinter.Label(ventana, text="Ingrese sus hobbies:")
+hobbies.grid(column=0, row=8)
+cuadro = tkinter.Text(ventana, width=20, height=10)
+cuadro.grid(column=1, row=8)
+
+
+
+"""hobbies.grid(column=0, row=8)
+caja8 = tkinter.Entry(ventana)
+caja8.grid(column=1, row=8)"""
+
+boton = tkinter.Button(ventana, text="Enviar", command=mifuncion)
+boton.grid(column=1, row=9)
+
+
 
 """
 aceptar = tkinter.Button(ventana, text="Aceptar", command=mifuncion)
