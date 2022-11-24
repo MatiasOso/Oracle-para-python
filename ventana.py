@@ -39,8 +39,6 @@ correo.grid(column=0, row=4)
 caja4 = tkinter.Entry(ventana)
 caja4.grid(column=1, row=4)
 
-
-
 """
 aceptar = tkinter.Button(ventana, text="Aceptar", command=mifuncion)
 aceptar.grid(column=2, row=0)
