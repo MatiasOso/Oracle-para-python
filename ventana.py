@@ -1,92 +1,31 @@
-#Para un usuario, crea un formulario que pida 
-#nombre, apellido, edad, sexo, correo, contraseña, username, hobbies.
-#Al presionar el botón, almacena los datos en un diccionario, y posteriormente, genera la consulta 
-#para insertar los datos en una tabla de una base de datos.
-
-import tkinter
-
-def mifuncion():
-    print(caja.get())
-
-ventana = tkinter.Tk()
-ventana.title("Puntajes_mo")
-ventana.geometry("500x500")
-
-nombre = tkinter.Label(ventana, text="Ingrese su nombre:")
-nombre.grid(column=0, row=0)
-caja = tkinter.Entry(ventana)
-caja.grid(column=1, row=0)
-
-apellido = tkinter.Label(ventana, text="Ingrese su apellido:")
-apellido.grid(column=0, row=1)
-caja2 = tkinter.Entry(ventana)
-caja2.grid(column=1, row=1)
-
-edad= tkinter.Label(ventana, text="Ingrese su edad:")
-edad.grid(column=0, row=2)
-caja3 = tkinter.Entry(ventana)
-caja3.grid(column=1, row=2)
-
-sexo= tkinter.Label(ventana, text="Ingrese su sexo:")
-radio=tkinter.Radiobutton(ventana, text="Masculino", value=1)
-radio.grid(column=0, row=3)
-radio2=tkinter.Radiobutton(ventana, text="Femenino", value=2)
-radio2.grid(column=1, row=3)
-
-correo= tkinter.Label(ventana, text="Ingrese su correo:")
-correo.grid(column=0, row=4)
-caja4 = tkinter.Entry(ventana)
-caja4.grid(column=1, row=4)
-
-password = tkinter.Label(ventana, text="Ingrese su contraseña:")
-password.grid(column=0, row=5)
-caja5 = tkinter.Entry(ventana, show="*")
-caja5.grid(column=1, row=5)
-
-repassword = tkinter.Label(ventana, text="Repita su contraseña:")
-repassword.grid(column=0, row=6)
-caja6 = tkinter.Entry(ventana, show="*")
-caja6.grid(column=1, row=6)
-
-if caja5.get() == caja6.get():
-    print("Contraseña correcta")    
-else:
-    print("Contraseña incorrecta")
-
-username = tkinter.Label(ventana, text="Ingrese su username:")
-username.grid(column=0, row=7)
-caja7 = tkinter.Entry(ventana)
-caja7.grid(column=1, row=7)
-
-hobbies = tkinter.Label(ventana, text="Ingrese sus hobbies:")
-hobbies.grid(column=0, row=8)
-cuadro = tkinter.Text(ventana, width=20, height=10)
-cuadro.grid(column=1, row=8)
+import tkinter as tk
+from tkinter import ttk
+import cx_Oracle
+import os
 
 
+os.environ['TNS_ADMIN']='C:/Users/Usuario/Desktop/Oracle/wallet' 
+connection=cx_Oracle.connect('ADMIN','TI2002-sec-213','db20220606233104_high')
+cursor=connection.cursor()
+#Cajero
+class InfoProd ():
+    def __init__(self) :
+        self.root = tk.Tk()
+        self.root.title('InfoPROD')
+        self.root.geometry('400x200')
+        self.root.resizable(0, 0)
+        self.__create_widgets()
+        self.root.mainloop()
+    def __create_widgets(self):
+        ttk.Label(self.root,text='CodProd').grid(column=0, row=0, sticky=tk.W, padx=5, pady=5)
+        ttk.Label(self.root,text='Nombre').grid(column=0, row=1, sticky=tk.W, padx=5, pady=5)
+        ttk.Label(self.root,text='PrecioVta').grid(column=0, row=2, sticky=tk.W, padx=5, pady=5)
+        ttk.Label(self.root,text='Stock').grid(column=0, row=3, sticky=tk.W, padx=5, pady=5)
+        ttk.Label(self.root,text='PrecioCto').grid(column=0, row=4, sticky=tk.W, padx=5, pady=5)
+        ttk.Label(self.root,text='VentasHoy').grid(column=0, row=5, sticky=tk.W, padx=5, pady=5)
+        ttk.Label(self.root,text='Venta ultimos 30 dias').grid(column=0, row=6, sticky=tk.W, padx=5, pady=5)
+        
 
-"""hobbies.grid(column=0, row=8)
-caja8 = tkinter.Entry(ventana)
-caja8.grid(column=1, row=8)"""
-
-boton = tkinter.Button(ventana, text="Enviar", command=mifuncion)
-boton.grid(column=1, row=9)
-
-
-
-"""
-aceptar = tkinter.Button(ventana, text="Aceptar", command=mifuncion)
-aceptar.grid(column=2, row=0)
-radio = tkinter.Radiobutton(ventana, text="Opcion 1")
-radio.grid(column=3, row=3)
-check = tkinter.Checkbutton(ventana, text="Opcion 2")
-check.grid(column=3, row=3)
-listas = tkinter.Listbox(ventana)
-listas.insert(1, "Opcion 1")
-listas.insert(2, "Opcion 2")
-texto = tkinter.Text(ventana, height=10, width=30)
-texto.insert(tkinter.END, "Hola Mundo")
-texto.grid(column=0, row=2)"""
-ventana.mainloop()
-
-#DEFINIR PARA GUARDAR EN ORACLE
+if __name__ == "__main__":
+    app = InfoProd()
+    app.mainloop()
